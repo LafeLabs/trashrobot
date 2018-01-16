@@ -23,12 +23,17 @@ Trash Robot
 -->
 </head>
 <body>
+<a href = "qrcode.png">
+    <div class = "qrcodebox">
+        <img style = "width:100px;" src = "qrcode.png"/>
+    </div>
+</a>
 <h1>TRASH ROBOT</h1>
 <ul>
     <li><a href = "http://www.trashrobot.org/cardboard/">CARDBOARD</a></li>
     <li><a href = "http://www.trashrobot.org/motor/">MOTOR</a></li>
     <li><a href = "http://www.trashrobot.org/computer/">COMPUTER</a></li>
-    <li><a href = "http://www.trashrobot.org/driver/">DRIVER</a></li>
+    <li><a href = "http://www.trashrobot.org/driver/">DRIVER BOARD</a></li>
     <li><a href = "http://www.trashrobot.org/wire/">WIRE</a></li>
     <li><a href = "http://www.trashrobot.org/map/">MAP</a></li>
 </ul>
@@ -38,6 +43,7 @@ body{
     background-color: black;
     color:#00ff00;
     font-size:2em;
+    margin: 0.5em 2em 2em 2em;
 }
 a{
     cursor:pointer;
@@ -45,6 +51,13 @@ a{
 }
 a:hover{
     background-color:#005000;
+}
+.qrcodebox{
+    background-color:white;
+    padding:20px 20px 20px 20px;
+    width:140px;
+    text-align:center;
+    border-radius:20px;
 }
 </style>
 </body>
