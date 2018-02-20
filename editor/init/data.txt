@@ -1,0 +1,28 @@
+    currentDataArray = [];
+    currentData = {
+            "shapes":[],
+            "glyph":"",
+            "unit":100,
+            "x0rel":0,
+            "y0rel":0,
+            "imgurl":"",
+            "imgw":2,
+            "imgleft":-1,
+            "imgtop":-1,
+            "w":500,
+            "h":500
+    };
+    currentDataArray.push(currentData);
+    currentDataIndex = 0;
+    inputs = document.getElementById("controlTable").getElementsByTagName("input");   
+    currentAddress = 0220;
+    unit = currentData.unit;
+    width0630 = 600;
+    height0630 = 400;
+    document.getElementById("canvas0630").width = innerWidth;
+    document.getElementById("canvas0630").height = innerHeight;
+    x0 = innerWidth/2 + currentData.x0rel*unit;
+    y0 = innerHeight/2 + currentData.y0rel*unit;    
+    buttons = document.getElementById("controlTable").getElementsByClassName("viewButt");
+    currentGlyph = currentTable[currentAddress] + ",0207,";
+    redraw();

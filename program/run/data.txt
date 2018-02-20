@@ -1,0 +1,44 @@
+@keyframes div1 {
+
+16.666666666666668% {background-color: white;}
+33.333333333333336% {background-color: black;}
+50% {background-color: black;}
+66.66666666666667% {background-color: black;}
+75% {background-color: white;}
+83.33333333333333% {background-color: black;}
+91.66666666666667% {background-color: black;}
+100% {background-color: black;}
+}
+@keyframes div2 {
+
+16.666666666666668% {background-color: black;}
+33.333333333333336% {background-color: black;}
+50% {background-color: white;}
+66.66666666666667% {background-color: black;}
+75% {background-color: black;}
+83.33333333333333% {background-color: black;}
+91.66666666666667% {background-color: white;}
+100% {background-color: black;}
+}
+@keyframes div3 {
+
+16.666666666666668% {background-color: black;}
+33.333333333333336% {background-color: white;}
+50% {background-color: black;}
+66.66666666666667% {background-color: black;}
+75% {background-color: black;}
+83.33333333333333% {background-color: black;}
+91.66666666666667% {background-color: black;}
+100% {background-color: white;}
+}
+@keyframes div4 {
+
+16.666666666666668% {background-color: black;}
+33.333333333333336% {background-color: black;}
+50% {background-color: black;}
+66.66666666666667% {background-color: white;}
+75% {background-color: black;}
+83.33333333333333% {background-color: white;}
+91.66666666666667% {background-color: black;}
+100% {background-color: black;}
+}

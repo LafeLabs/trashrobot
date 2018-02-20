@@ -1,0 +1,16 @@
+{
+    "actions03xx":"actions03xx/data.txt",
+    "actions010xx":"actions010xx/data.txt",
+    "actions07xx":"actions07xx/data.txt",
+    "init":"init/data.txt",
+    "redraw":"redraw/data.txt",
+    "keyboard":"keyboard/data.txt",
+    "page":"page/data.txt",
+    "pageevents":"pageevents/data.txt",
+    "shapes":"shapes/data.txt",
+    "style":"style/data.txt",
+    "symbols03xx":"symbols03xx/data.txt",
+    "symbols010xx":"symbols010xx/data.txt",
+    "symbols07xx":"symbols07xx/data.txt",
+    "topfunctions":"topfunctions/data.txt"
+}

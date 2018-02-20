@@ -1,0 +1,55 @@
+body{
+    font-family:courier;
+    font-size:20px;
+}
+input{
+    font-family:courier;
+    font-size:20px;
+}
+#addressInput{
+    width:5em;
+}
+#actionInput{
+    width:1em;
+}
+#buttonTable{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    text-align:center;
+}
+#buttonTable td{
+    border:solid;
+    border-radius:0.3em;
+    padding:0em 0.3em 0em 0.3em;
+    margin:0.3em 0.3em 0.3em 0.3em;
+    cursor:pointer;
+    font-size:0.9em;
+    height:1.1em;
+    z-index:2;
+}
+#buttonTable td:hover{
+    background-color:grey;
+}
+#buttonTable td:active{
+    background-color:yellow;
+}
+#inputTable{
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+#glyphspellinput{
+    position:absolute;
+    left:0.5em;
+    right:10em;
+    bottom:1.5em;
+}
+#textIO{
+    position:absolute;
+    bottom:3em;
+    right:0px;
+    width:14em;
+    font-family:courier;
+    font-size:12px;
+}

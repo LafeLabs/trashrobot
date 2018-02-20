@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<body>
+<div id = "div1"></div>
+<div id = "div2"></div>
+<div id = "div3"></div>
+<div id = "div4"></div>
+<style>
+#div1{
+    left:0%;
+    animation-name: div1;
+}
+#div2{
+    left:25%;
+    animation-name: div2;
+}
+#div3{
+    left:50%;
+    animation-name: div3;
+}
+#div4{
+    left:75%;
+    animation-name: div4;
+}
+div{
+    position:absolute;
+    top:25%;
+    bottom:0px;
+    width:25%;
+    animation-duration: 2s;
+    animation-timing-function:step-start;
+    animation-iteration-count: 1;
+}
+body{
+    background-color: black;
+}
+
+
+@keyframes div1 {
+
+16.666666666666668% {background-color: white;}
+33.333333333333336% {background-color: black;}
+50% {background-color: black;}
+66.66666666666667% {background-color: black;}
+75% {background-color: white;}
+83.33333333333333% {background-color: black;}
+91.66666666666667% {background-color: black;}
+100% {background-color: black;}
+}
+@keyframes div2 {
+
+16.666666666666668% {background-color: black;}
+33.333333333333336% {background-color: black;}
+50% {background-color: white;}
+66.66666666666667% {background-color: black;}
+75% {background-color: black;}
+83.33333333333333% {background-color: black;}
+91.66666666666667% {background-color: white;}
+100% {background-color: black;}
+}
+@keyframes div3 {
+
+16.666666666666668% {background-color: black;}
+33.333333333333336% {background-color: white;}
+50% {background-color: black;}
+66.66666666666667% {background-color: black;}
+75% {background-color: black;}
+83.33333333333333% {background-color: black;}
+91.66666666666667% {background-color: black;}
+100% {background-color: white;}
+}
+@keyframes div4 {
+
+16.666666666666668% {background-color: black;}
+33.333333333333336% {background-color: black;}
+50% {background-color: black;}
+66.66666666666667% {background-color: white;}
+75% {background-color: black;}
+83.33333333333333% {background-color: white;}
+91.66666666666667% {background-color: black;}
+100% {background-color: black;}
+}
+/*
+@keyframes div1 {
+    25% {background-color: white;}
+    50% {background-color: black;}
+    75% {background-color: black;}
+    100% {background-color: black;}
+}
+@keyframes div2 {
+    25% {background-color: black;}
+    50% {background-color: white;}
+    75% {background-color: black;}
+    100% {background-color: black;}
+}
+@keyframes div3 {
+    25% {background-color: black;}
+    50% {background-color: black;}
+    75% {background-color: white;}
+    100% {background-color: black;}
+}
+@keyframes div4 {
+    25% {background-color: black;}
+    50% {background-color: black;}
+    75% {background-color: black;}
+    100% {background-color: white;}
+}
+*/
+</style>
+</body>
+<html>
+

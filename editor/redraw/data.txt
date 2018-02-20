@@ -1,0 +1,21 @@
+    ctx = document.getElementById("canvas0630").getContext("2d");
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    doTheThing(0300);
+    drawGlyph(currentGlyph);
+    if(editMode){
+        doTheThing(0300);
+        x = 50;
+        y = innerHeight  - 50;
+        side = 25;
+        spellGlyph(currentGlyph);        
+    }
+    var glyphArray = currentGlyph.split(",");
+    currentTable[currentAddress] = "";
+    for(var index = 0;index < glyphArray.length;index++){
+        if(glyphArray[index] != "0207" && glyphArray[index].length > 0){
+            currentTable[currentAddress] += glyphArray[index] + ",";
+        }
+    }
+    currentData.glyph = currentTable[currentAddress];
+    inputs[0].value = "0" + currentAddress.toString(8);
+    document.getElementById("glyphspellinput").value = currentTable[currentAddress];

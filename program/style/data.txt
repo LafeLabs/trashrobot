@@ -1,0 +1,44 @@
+body{
+    font-family:courier;
+    font-size:20px;
+}
+input{
+    font-family:courier;
+    font-size:20px;
+}
+#savebutton{
+    position:absolute;
+    right:1em;
+    top:1em;
+    font-family:courier;
+    font-size:36px;
+    cursor:pointer;
+}
+button:hover{
+    background-color:green;
+}
+button:active{
+    background-color:yellow;
+}
+#addressInput{
+    width:5em;
+}
+#actionInput{
+    width:1em;
+}
+#inputTable{
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+#glyphspellinput{
+    position:absolute;
+    left:0.5em;
+    right:0.5em;
+    bottom:0.25em;
+}
+#mainCanvas{
+    position:absolute;
+    left:0px;
+    top:0px;
+}

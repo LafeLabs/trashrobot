@@ -1,0 +1,400 @@
+if(localCommand == 0300){// <page0300>
+        x = x0;
+        y = y0;
+        theta = theta0;
+        side = unit;
+        thetaStep = Math.PI/2;
+        scaleFactor = 2;
+        ctx.lineWidth = 2;
+        ctx.strokeStyle= resetColor;//"#00ff00";
+        ctx.fillStyle=resetColor;
+        currentStroke = resetColor;
+        currentFill = resetColor;
+        currentWord = "";
+        currentHTML = "";
+        currentStyle = "";
+
+        //</page0300>
+    }
+    if(localCommand == 0304){//<page0304>
+    thetaStep = Math.PI/2;
+    //</page0304>
+    }
+    if(localCommand == 0305){//<page0305>
+    thetaStep = 2*Math.PI/5;
+    //</page0305>
+    }
+    if(localCommand == 0306){//<page0306>
+    thetaStep = Math.PI/3;
+    //</page0306>
+    }
+    if(localCommand == 0310){//<page0310>
+    scaleFactor = Math.sqrt(2); 
+    //</page0310>
+    }
+    if(localCommand == 0311){//<page0311>
+    scaleFactor = phi; //"golden" ratio 
+    //</page0311>
+    }
+    if(localCommand == 0312){//<page0312>
+    scaleFactor = Math.sqrt(3); 
+    //</page0312>
+    }
+    if(localCommand == 0313){//<page0313>
+    scaleFactor = 2;  //2x
+    //</page0313>
+    }
+    if(localCommand == 0314){//<page0314>
+    scaleFactor = 3;  //3x
+    //</page0314>
+    }
+    if(localCommand == 0315){//<page0315>
+    scaleFactor = 3.14159;  //pi*
+    //</page0315>
+    }
+    if(localCommand == 0316){//<page0316>
+    scaleFactor = 5;  //5*
+    //</page0316>
+    }
+    if(localCommand == 0317){//<page0317>
+    side = unit; 
+    //</page0317>
+    }
+    if(localCommand == 0320){//<page0320>
+    ctx.strokeStyle="black";
+    ctx.lineWidth = 2;    	
+    ctx.fillStyle = "black";
+    currentStroke = "black";
+    currentFill = "black";
+    //</page0320>
+    }
+    if(localCommand == 0321){//<page0321>
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 2;    	
+    ctx.fillStyle = "white";
+    currentStroke = "white";
+    currentFill = "white";
+    //</page0321>
+    }
+    if(localCommand == 0322){//<page0322>
+    ctx.strokeStyle="red";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "red";    
+    currentStroke = "red";
+    currentFill = "red";
+    //</page0322>
+    }
+    if(localCommand == 0323){//<page0323>
+    ctx.strokeStyle="orange";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "orange";    
+    currentStroke = "orange";
+    currentFill = "orange";
+    //</page0323>
+    }
+    if(localCommand == 0324){//<page0324>
+    ctx.strokeStyle="yellow";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "yellow";    
+    currentStroke = "yellow";
+    currentFill = "yellow";
+    //</page0324>
+    }
+    if(localCommand == 0325){//<page0325>
+    ctx.strokeStyle="green";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "green";    
+    currentStroke = "green";
+    currentFill = "green";
+    //</page0325>
+    }
+    if(localCommand == 0326){//<page0326>
+    ctx.strokeStyle="blue";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "blue";    
+    currentStroke = "blue";
+    currentFill = "blue";
+    //</page0326>
+    }
+    if(localCommand == 0327){//<page0327>
+    ctx.strokeStyle="purple";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "purple";    
+    currentStroke = "purple";
+    currentFill = "purple";
+    //</page0327>
+    }
+    if(localCommand == 0330){//<page0330>
+    x += side*Math.cos(theta);   
+    y += side*Math.sin(theta); 
+    //</page0330>
+    }
+    if(localCommand == 0331){//<page0331>
+    x -= side*Math.cos(theta);   
+    y -= side*Math.sin(theta); 
+    //</page0331>
+    }
+    if(localCommand == 0332){//<page0332>
+    x += side*Math.cos(theta - thetaStep);
+    y += side*Math.sin(theta - thetaStep);
+    //</page0332>
+    }
+    if(localCommand == 0333){//<page0333>
+    x += side*Math.cos(theta + thetaStep);
+    y += side*Math.sin(theta + thetaStep);
+    //</page0333>
+    }
+    if(localCommand == 0334){//<page0334>
+    theta -= thetaStep; // CCW
+    //</page0334>    
+    }
+    if(localCommand == 0335){//<page0335>
+    theta += thetaStep; // CW
+    //</page0335>
+    }
+    if(localCommand == 0336){//<page0336>
+    side /= scaleFactor; // -
+    //</page0336>
+    }
+    if(localCommand == 0337){//<page0337>
+    side *= scaleFactor; // +
+    //</page0337>
+    }
+    if(localCommand == 0340){//<page0340>
+
+    //point
+    ctx.beginPath();
+    ctx.arc(x, y, 3, 0, 2 * Math.PI);
+    ctx.fill();	
+    ctx.closePath();
+    currentSVG += "<circle cx=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" cy = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" r = \"3\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" ";
+    currentSVG += "fill = \"" + currentStroke + "\" />\n";		
+    //</page0340>
+    }
+    if(localCommand == 0341){//<page0341>
+    //circle
+    ctx.beginPath();
+    ctx.arc(x, y, side, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.stroke();
+    currentSVG += "    <circle cx=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" cy = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" ";
+    currentSVG += "fill = \"none\" />\n";		
+    //</page0341>
+    }
+    if(localCommand == 0342){//<page0342>
+    //line
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+    ctx.stroke();		
+    ctx.closePath();
+
+    var x2 = Math.round(x + side*Math.cos(theta));
+    var y2 = Math.round(y + side*Math.sin(theta));
+    currentSVG += "    <line x1=\""+Math.round(x).toString()+"\" y1=\""+Math.round(y).toString()+"\" x2=\""+x2.toString()+"\" y2=\""+y2.toString()+"\" style=\"stroke:" + currentStroke + ";stroke-width:2\" />\n"
+
+    //</page0342>
+    }
+    if(localCommand == 0343){//<page0343>
+    ctx.beginPath();
+    ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
+    ctx.stroke();
+    ctx.closePath();
+    localString = "";
+    localString += "  <path d=\"";	
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString() + "\" fill = \"none\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" />\n";
+    currentSVG += localString;
+    //</page0343>    
+    }
+    if(localCommand == 0344){//<page0344>
+    //part of a poly line or path 
+    ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+    ctx.stroke();		
+
+    var x2 = Math.round(x + side*Math.cos(theta));
+    var y2 = Math.round(y + side*Math.sin(theta));
+    currentSVG += "L" + x2 + " " + y2 + " ";
+
+    //</page0344>
+    }
+    if(localCommand == 0345){//<page0345>
+    //arc
+    ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
+    ctx.stroke();
+
+    localString = "";
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+
+    //</page0345>
+    }
+    if(localCommand == 0346){//<page0346>
+    //arc, reverse direction
+    ctx.arc(x, y, side, theta + thetaStep,theta - thetaStep,true);
+    ctx.stroke();
+
+    localString = "";
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    //</page0346>
+    }
+    if(localCommand == 0347){//<page0347>
+    //filled circle
+    ctx.beginPath();
+    ctx.arc(x, y, side, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fill();
+    currentSVG += "    <circle cx=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" cy = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" ";
+    currentSVG += "fill = \"" + currentFill + "\" />\n";		
+
+    //</page0347>
+    }
+    if(localCommand == 0350){//<page0350>
+    thetaStep /= 2;  //angle/2
+    //</page0350>
+    }
+    if(localCommand == 0351){//<page0351>
+    thetaStep *= 2;  //2angle
+    //</page0351>
+    }
+    if(localCommand == 0352){//<page0352>
+    thetaStep /= 3; //angle/3
+    //</page0352>
+    }
+    if(localCommand == 0353){//<page0353>
+    thetaStep *= 3; //3angle
+    //</page0353>
+    }
+    if(localCommand == 0360){//<page0360>  //first part of bezier in middle of a path
+        ctx.moveTo(Math.round(x),Math.round(y));
+        cpx1 = Math.round(x + side*Math.cos(theta));
+        cpy1 = Math.round(y + side*Math.sin(theta));
+        currentSVG += " M";
+        currentSVG += (Math.round(x)).toString() + ",";
+        currentSVG += (Math.round(y)).toString() + " C";
+        currentSVG += cpx1.toString() + "," + cpy1.toString() + " ";
+    //</page0360>
+    }
+    if(localCommand == 0361){//<page0361>
+        x2 = Math.round(x);
+        y2 = Math.round(y);
+        cpx2 = Math.round(x + side*Math.cos(theta));
+        cpy2 = Math.round(y + side*Math.sin(theta));
+        ctx.bezierCurveTo(cpx1,cpy1,cpx2,cpy2,x2,y2);
+        ctx.stroke();
+        currentSVG += cpx2.toString() + "," + cpy2.toString() + " ";
+        currentSVG += x2.toString() + "," + y2.toString() + " ";		
+    
+    //</page0361>
+    }
+    if(localCommand == 0362){//<page0362>
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    currentSVG += "	<path d = \"M";
+    currentSVG += Math.round(x).toString() + " ";
+    currentSVG += Math.round(y).toString() + " ";
+
+    //	   currentSVG += "  <polyline points=\"";		
+    //</page0362>
+    }
+    if(localCommand == 0363){//<page0363>
+    ctx.closePath();
+    ctx.stroke();		
+    ctx.fill();		
+    currentSVG += "Z\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"" + currentFill + "\" "+"/>";
+    //</page0363>
+    }
+    if(localCommand == 0364){//<page0364>
+    ctx.closePath();
+    currentSVG += "\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"" + "none" + "\" "+"/>";
+    //</page0364>
+    }
+    if(localCommand == 0365){//<page0365>
+    ctx.font=side.toString(8) + "px " + myFont;
+    ctx.fillText(currentWord,x,y);
+    currentSVG += "    <text x=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" y = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" fill = \"" + currentStroke + "\""; 
+    currentSVG += " font-size = \"";
+    currentSVG += side + "px\"";
+    currentSVG += " font-family = \"futura\"";
+    currentSVG += ">";
+    currentSVG += currentWord;
+    currentSVG += "</text>\n";	
+    currentWord = "";
+    currentHTML = "";
+    //</page0365>
+    }
+    if(localCommand == 0366){//<page0366>
+    ctx.beginPath();
+    ctx.moveTo(Math.round(x),Math.round(y));
+    cpx1 = Math.round(x + side*Math.cos(theta));
+    cpy1 = Math.round(y + side*Math.sin(theta));
+    currentSVG += "<path    d = \"M";
+    currentSVG += (Math.round(x)).toString() + ",";
+    currentSVG += (Math.round(y)).toString() + " C";
+    currentSVG += cpx1.toString() + "," + cpy1.toString() + " ";
+
+    //<path  d="M100,200 C150,150 200,150 250,200" />
+    //</page0366>
+    }
+    if(localCommand == 0367){//<page0367>
+    x2 = Math.round(x);
+    y2 = Math.round(y);
+    cpx2 = Math.round(x + side*Math.cos(theta));
+    cpy2 = Math.round(y + side*Math.sin(theta));
+    ctx.bezierCurveTo(cpx1,cpy1,cpx2,cpy2,x2,y2);
+    ctx.stroke();
+    currentSVG += cpx2.toString() + "," + cpy2.toString() + " ";
+    currentSVG += x2.toString() + "," + y2.toString() + "\" fill = \"none\" stroke-width = \"2\" stroke = \"" + currentStroke + "\" />";		
+    //</page0367>
+    }
+    

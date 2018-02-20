@@ -1,0 +1,20 @@
+   <canvas id="invisibleCanvas" style="display:none"></canvas>
+    <canvas id="mainCanvas"></canvas>
+    <table id="buttonTable">
+        <tbody><tr>
+            <td>SAVE TO FEED</td>
+            <td>IMPORT BYTECODE</td>
+            <td>EXPORT BYTECODE</td>
+        </tr></tbody></table>
+    <input id="glyphspellinput">
+    <table id = "inputTable">
+        <tbody><tr>
+            <td>ADDRESS:</td>
+            <td><input id="addressInput"></td>
+        </tr>
+        <tr>
+            <td>ACTION:</td>
+            <td><input id="actionInput"></td>
+        </tr>
+    </tbody></table>
+    <textarea id="textIO"></textarea>

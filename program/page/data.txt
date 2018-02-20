@@ -1,0 +1,14 @@
+    <canvas id="invisibleCanvas" style="display:none"></canvas>
+    <canvas id="mainCanvas"></canvas>
+    <input id="glyphspellinput">
+    <table id="inputTable">
+        <tbody><tr>
+            <td>ADDRESS:</td>
+            <td><input id="addressInput"></td>
+        </tr>
+        <tr>
+            <td>ACTION:</td>
+            <td><input id="actionInput"></td>
+        </tr>
+    </tbody></table>
+    <button id = "savebutton">SAVE</button>

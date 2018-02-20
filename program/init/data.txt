@@ -1,0 +1,9 @@
+    currentAddress = 0222;
+    doTheThing(0700);
+    unit = 100;
+    document.getElementById("mainCanvas").width = innerWidth;
+    document.getElementById("mainCanvas").height = innerHeight;
+    x0 = innerWidth/2;
+    y0 = innerHeight/2;    
+    currentGlyph = currentTable[currentAddress] + ",0207,";
+    redraw();

@@ -1,0 +1,117 @@
+//actions 07xx
+//time units are in percent, normalized at the end
+if(localCommand == 0700){
+    pixelCount = 0;
+    div1 = "";
+    div2 = "";
+    div3 = "";
+    div4 = "";
+	output= “”;
+}
+if(localCommand == 0730){
+    pixelCount += side;
+    div1 += "\n" + pixelCount.toString() + "% {background-color: white;}";
+    div2 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div3 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div4 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+}
+if(localCommand == 0731){
+    pixelCount += side;
+    div1 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div2 += "\n" + pixelCount.toString() + "% {background-color: white;}";
+    div3 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div4 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+}
+if(localCommand == 0732){
+    pixelCount += side;
+    div1 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div2 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div3 += "\n" + pixelCount.toString() + "% {background-color: white;}";
+    div4 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+}
+if(localCommand == 0733){
+    pixelCount += side;
+    div1 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div2 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div3 += "\n" + pixelCount.toString() + "% {background-color: black;}";
+    div4 += "\n" + pixelCount.toString() + "% {background-color: white;}";
+}
+if(localCommand == 0740){
+    div1Array = div1.split("\n");
+    div1NumberArray = [];
+    for(var index = 0;index < div1Array.length;index++){
+            if(div1Array[index].length>1){
+                div1NumberArray.push(parseInt(div1Array[index].split("%")[0]));
+            }
+    }
+    div1last = div1NumberArray[div1NumberArray.length-1];
+    for(var index = 0;index < div1NumberArray.length;index++){
+        div1NumberArray[index] *= 100;    
+        div1NumberArray[index] /= div1last;
+    }
+    div1 = "";
+    for(var index = 0;index < div1NumberArray.length;index++){
+        div1 += "\n" + div1NumberArray[index].toString() + "%"+div1Array[index+1].split("%")[1];
+    }
+    
+    div2Array = div2.split("\n");
+    div2NumberArray = [];
+    for(var index = 0;index < div2Array.length;index++){
+            if(div2Array[index].length>1){
+                div2NumberArray.push(parseInt(div2Array[index].split("%")[0]));
+            }
+    }
+    div2last = div2NumberArray[div2NumberArray.length-1];
+    for(var index = 0;index < div2NumberArray.length;index++){
+        div2NumberArray[index] *= 100;    
+        div2NumberArray[index] /= div2last;
+    }
+    div2 = "";
+    for(var index = 0;index < div2NumberArray.length;index++){
+        div2 += "\n" + div2NumberArray[index].toString() + "%"+div2Array[index+1].split("%")[1];
+    }
+    
+    div3Array = div3.split("\n");
+    div3NumberArray = [];
+    for(var index = 0;index < div3Array.length;index++){
+            if(div3Array[index].length>1){
+                div3NumberArray.push(parseInt(div3Array[index].split("%")[0]));
+            }
+    }
+    div3last = div3NumberArray[div3NumberArray.length-1];
+    for(var index = 0;index < div3NumberArray.length;index++){
+        div3NumberArray[index] *= 100;    
+        div3NumberArray[index] /= div3last;
+    }
+    div3 = "";
+    for(var index = 0;index < div3NumberArray.length;index++){
+        div3 += "\n" + div3NumberArray[index].toString() + "%"+div3Array[index+1].split("%")[1];
+    }
+    
+    div4Array = div4.split("\n");
+    div4NumberArray = [];
+    for(var index = 0;index < div4Array.length;index++){
+            if(div4Array[index].length>1){
+                div4NumberArray.push(parseInt(div4Array[index].split("%")[0]));
+            }
+    }
+    div4last = div4NumberArray[div4NumberArray.length-1];
+    for(var index = 0;index < div4NumberArray.length;index++){
+        div4NumberArray[index] *= 100;    
+        div4NumberArray[index] /= div4last;
+    }
+    div4 = "";
+    for(var index = 0;index < div4NumberArray.length;index++){
+        div4 += "\n" + div4NumberArray[index].toString() + "%"+div4Array[index+1].split("%")[1];
+    }
+    output = "@keyframes div1 {\n";
+    output += div1 + "\n}\n";
+    output += "@keyframes div2 {\n";
+    output += div2 + "\n}\n";
+    output += "@keyframes div3 {\n";
+    output += div3 + "\n}\n";
+    output += "@keyframes div4 {\n";
+    output += div4 + "\n}\n";
+    console.log(output);    
+}
+

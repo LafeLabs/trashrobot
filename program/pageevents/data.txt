@@ -1,0 +1,84 @@
+    actionInput = document.getElementById("actionInput");
+    addressInput = document.getElementById("addressInput");
+    actionInput.onkeydown = function(e) {
+        charCode = e.keyCode || e.which;
+        if(charCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(charCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(charCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+        if(charCode == 046){
+//        doTheThing(023);
+            currentAddress++;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }
+        if(charCode == 050){
+//        doTheThing(022);
+            currentAddress--;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }    
+    }
+    
+    
+    actionInput.onkeypress = function(a){//action
+        charCode = a.keyCode || a.which;
+        console.log(a.which);
+        if(parseInt(currentTable[charCode],8) >= 0200){
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+                if(glyphSplit[index] == "0207"){
+                    currentGlyph += currentTable[charCode] + ",0207,";
+                }
+            }
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+            }
+            redraw();
+        } 
+        if(parseInt(currentTable[charCode],8) < 040){
+            doTheThing(parseInt(currentTable[charCode],8));
+            redraw();
+        }
+        this.value = "";
+    }
+    
+    addressInput.onchange = function(){
+        currentAddress = parseInt(this.value,8);
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+        redraw();
+    }
+
+document.getElementById("glyphspellinput").onchange = function(){
+    currentTable[currentAddress] = this.value;
+    currentGlyph = currentTable[currentAddress] + "0207,";
+    redraw();
+}
+document.getElementById("savebutton").onclick = function(){
+    doTheThing(0700);
+    drawGlyph(currentGlyph);
+    doTheThing(0740);
+    data = output;
+    var httpc = new XMLHttpRequest();
+    var url = "glyphsaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data=" + data);//send text to saver.php
+}
+

@@ -1,0 +1,215 @@
+    inputs[1].onkeydown = function(e) {
+        charCode = e.keyCode || e.which;
+        if(charCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(charCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(charCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+        if(charCode == 046){
+//        doTheThing(023);
+            currentAddress++;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }
+        if(charCode == 050){
+//        doTheThing(022);
+            currentAddress--;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }    
+    }
+    
+    
+    inputs[2].onkeydown = function(e) {
+        charCode = e.keyCode || e.which;
+        if(charCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(charCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(charCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+    }
+    
+    inputs[3].onkeydown = function(e) {
+        charCode = e.keyCode || e.which;
+        if(charCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(charCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(charCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+    }
+    inputs[1].onkeypress = function(a){//action
+        charCode = a.keyCode || a.which;
+        console.log(a.which);
+        if(parseInt(currentTable[charCode],8) >= 0200){
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+                if(glyphSplit[index] == "0207"){
+                    currentGlyph += currentTable[charCode] + ",0207,";
+                }
+            }
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+            }
+            redraw();
+        } 
+        if(parseInt(currentTable[charCode],8) < 040){
+            doTheThing(parseInt(currentTable[charCode],8));
+            redraw();
+        }
+        this.value = "";
+    }
+    
+    
+    inputs[2].onkeypress = function(a){//print
+        charCode = a.keyCode || a.which;
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+            if(glyphSplit[index] == "0207"){
+                currentGlyph += "0" + (charCode + 01000).toString(8) + ",0207,";
+            }
+        }
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        redraw();
+        
+        this.value = "";
+    }
+    
+    
+    inputs[3].onkeypress = function(a){//stack
+        charCode = a.keyCode || a.which;    
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+            if(glyphSplit[index] == "0207"){
+                currentGlyph += "0" + (charCode).toString(8) + ",0207,";
+            }
+        }
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        redraw();
+        this.value = "";
+    }
+    
+    inputs[0].onchange = function(){
+        currentAddress = parseInt(this.value,8);
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+        redraw();
+    }
+
+    buttons[0].onclick = function(){//symbol/shape
+        if(currentAddress < 01000){
+            currentAddress += 01000;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+        }
+        else{
+            currentAddress -= 01000;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+        }
+        redraw();    
+    }
+    
+    
+    buttons[1].onclick = function(){//export hypercube
+        var localString = "";
+        for(var index = 040;index < 01777;index++){
+            if(currentTableStart[index] != currentTable[index]){
+                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+            }
+        }
+        document.getElementById("textIO0630").value = localString;
+    }
+    
+    buttons[2].onclick = function(){//import hypercube
+        localString = "";
+        localString = document.getElementById("textIO0630").value;
+        var inputStack = localString.split("\n");
+        for(var index = 0;index < inputStack.length;index++){
+            var stackLine = inputStack[index].split(":");
+            var localAddress = parseInt(stackLine[0],8);
+            var localGlyph = stackLine[1];
+            currentTable[localAddress] = localGlyph;
+        }
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+        redraw();
+    }
+    buttons[3].onclick = function(){
+        filename = inputs[4].value;
+        var localString = "";
+        for(var index = 0220;index < 0247;index++){
+            if(currentTable[index].length > 1){
+                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+            }
+        }
+        for(var index = 01220;index < 01247;index++){
+            if(currentTable[index].length > 1){
+                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+            }
+        }
+        document.getElementById("textIO0630").value = localString;
+        data = localString;
+        var httpc = new XMLHttpRequest();
+        var url = "shapesaver.php";        
+        httpc.open("POST", url, true);
+        httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        httpc.send("data=" + data + "&filename=" + filename);//send text to saver.php
+    }
+
+
+document.getElementById("glyphspellinput").onchange = function(){
+    currentTable[currentAddress] = this.value;
+    currentGlyph = currentTable[currentAddress] + "0207,";
+    redraw();
+}
+
+document.getElementById("hyperspacenav").onchange = function(){
+    foo = window.location.href;
+    baseurl = foo.split("?")[0];
+    window.location = baseurl + "?url=" + this.value;
+}

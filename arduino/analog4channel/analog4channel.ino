@@ -21,36 +21,48 @@ void loop() {
     x1 = analogRead(A1);
     x2 = analogRead(A2);
     x3 = analogRead(A3);
-    Serial.print(x0);    
+    Serial.print(x0-1010);    
     Serial.print(",");
-    Serial.print(x1);    
+    Serial.print(x1-1010);    
     Serial.print(",");
-    Serial.print(x2);    
+    Serial.print(x2-1010);    
     Serial.print(",");
-    Serial.println(x3);    
+    Serial.println(x3-1010);    
     if(x0 < 1000){
-       digitalWrite(10,HIGH);
+      digitalWrite(11,LOW);
+      digitalWrite(12,LOW);
+      digitalWrite(13,LOW);
+      digitalWrite(10,HIGH);
     }
     else{
       digitalWrite(10,LOW);
     }
 delay(1);
     if(x1 < 1000){
-       digitalWrite(11,HIGH);
+      digitalWrite(12,LOW);
+      digitalWrite(13,LOW);
+      digitalWrite(10,LOW);
+      digitalWrite(11,HIGH);
     }
     else{
       digitalWrite(11,LOW);
     }
 delay(1);
     if(x2 < 1000){
-       digitalWrite(12,HIGH);
+      digitalWrite(11,LOW);
+      digitalWrite(13,LOW);
+      digitalWrite(10,LOW);
+      digitalWrite(12,HIGH);
     }
     else{
       digitalWrite(12,LOW);
     }
 delay(1);
     if(x3 < 1000){
-       digitalWrite(13,HIGH);
+      digitalWrite(10,LOW);
+      digitalWrite(11,LOW);
+      digitalWrite(12,LOW);
+      digitalWrite(13,HIGH);
     }
     else{
       digitalWrite(13,LOW);
